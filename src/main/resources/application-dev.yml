@@ -1,0 +1,33 @@
+#开发环境
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: "jdbc:mysql://localhost:3306/menu_auth_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai"
+      username: root
+      password: Hello@123456
+      initial-size: 1
+      min-idle: 1
+      max-active: 300
+      max-wait: 3000
+      validation-query: "SELECT 1 FROM DUAL"
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: -1
+      time-between-eviction-runs-millis: 60000
+      filters: stat,wall
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: druid
+        reset-enable: false
+        allow: 127.0.0.1
+        deny: 192.168.31.202

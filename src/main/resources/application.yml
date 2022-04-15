@@ -1,0 +1,39 @@
+# 所有环境通用的配置，放在这里
+#spring配置
+spring:
+  profiles:
+    #指定环境
+    active: dev
+  application:
+    name: project-template
+  mvc:
+    # 404 交给异常处理器处理
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  #返回日期格式化
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+#日志存储位置
+logging:
+  logdir: ./log
+server:
+  port: 8080
+  error:
+    include-exception: true
+  #项目访问路径
+  servlet:
+    context-path: /
+#mybatis配置
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+#热部署
+devtools:
+  restart:
+    enabled: true
+    additional-paths: src/main
+    exclude: WEB-INF/**
